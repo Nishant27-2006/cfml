@@ -57,3 +57,44 @@ The current results prove that hybrid models work for ECG analysis, but there is
 For further inquiries or collaboration opportunities, please feel free to reach out via my GitHub profile or email me at **nishantg2706@gmail.com**.
 
 ---
+## Methodology
+
+This project implements a complete end-to-end pipeline for **ECG signal classification** using a **1D Convolutional Neural Network (CNN)** with K-Fold Cross-Validation, data augmentation, and multiple evaluation metrics.
+
+### Overall Pipeline
+The methodology consists of four major stages:
+
+1. **Data Input & Preprocessing**  
+   - Load raw ECG signals (`.dat` + `.hea`)  
+   - Segment signals into fixed-length windows  
+   - Normalize and reshape for Conv1D  
+   - Add light Gaussian noise for augmentation
+
+2. **CNN Architecture**  
+   The model is a regularized 1D-CNN designed for biomedical time-series:
+
+   - `Conv1D` (32 filters, kernel=3, ReLU)  
+   - `MaxPooling1D`  
+   - `Dropout`  
+   - `Conv1D` (64 filters, kernel=3, ReLU)  
+   - `MaxPooling1D`  
+   - `Flatten`  
+   - `Dense` (64 units, ReLU)  
+   - `Dense` (1 → sigmoid for binary classification)
+
+   **CNN Diagram:**  
+   ![CNN Architecture](cnn.png)
+
+3. **Training Strategy — K-Fold Cross Validation**  
+   - 5-fold training  
+   - Noise-augmented training data  
+   - Metrics per fold:  
+     - Accuracy Curve  
+     - Loss Curve  
+     - Confusion Matrix  
+     - ROC Curve (AUC)
+
+4. **End-to-End Workflow Overview**  
+   A high-level block diagram illustrating the full pipeline:
+
+   ![Methodology Diagram](methodology.png)
