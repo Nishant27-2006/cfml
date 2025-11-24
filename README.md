@@ -1,100 +1,138 @@
+# Computational Solutions for Cardiovascular Diagnostics
 
-# Computational Solutions for Cardiovascular Diagnostics  
 ![knockout_logo](https://github.com/Nishant27-2006/georgia-tech/blob/main/gtcfml.png)
 
-# ECG Analysis with Hybrid CNN-SVM
+## ECG Analysis with Hybrid CNN-SVM
 
-_All research and materials produced during tenure as Research Lead at Georgia Tech's Cardiovascular Fluid Mechanics Laboratory. The code, data, and insights are property of Georgia Tech and collaborators involved in the project._
-
-## Overview
-
-I led this research at Georgia Tech to tackle a massive issue: heart disease. Despite medical advances, it kills too many people. We focused on early detection using non-invasive ECG analysis.
-
-This project details the machine learning system I built to diagnose heart disease. We used data from PhysioNet and created a pipeline that merges **convolutional neural networks (CNNs)** with **support vector machines (SVMs)**. The goal was to maximize accuracy while keeping the system practical for real doctors.
-
-## What We Built
-
-We developed a hybrid CNN-SVM model to get the best of both worlds.
-
-- **The Approach:** We used CNNs for automatic feature extraction and SVMs for classification.
-- **The Features:** The model looks at temporal data like QRS-duration and RR intervals. It also analyzes frequency-domain features using Fast Fourier Transform (FFT).
-- **The Logic:** The CNN component automatically pulls relevant signal features. This helps the system scale across different datasets without manual tweaking.
-
-## The Results
-
-The model hit **100% classification accuracy** on our training and validation sets. While those numbers are strong, they point to overfitting. The system is highly accurate on data it knows but needs adjustment to handle unseen test data effectively.
-
-## My Role
-
-As Research Lead, I managed the project from the initial idea to the final code.
-
-- I designed the ML pipeline and led the feature extraction work.
-- I managed a team of research assistants to refine the algorithms.
-- I worked directly with clinicians to ensure our code addressed actual medical needs.
-- We published our findings in the _Journal of Computational Biology_ and presented at the Georgia Tech Biomedical Symposium.
-
-## What Is Next
-
-The current results prove that hybrid models work for ECG analysis, but there is room to improve.
-
-- **Fixing Overfitting:** I plan to use cross-validation and data augmentation to help the model generalize. I will also test L2 regularization and dropout techniques.
-- **Clinical Use:** The long-term plan is to get this into live clinical workflows so doctors can make faster diagnoses.
-- **Validation:** We need to test this on a larger patient group to prove it works in the real world.
-
-## Publications
-
-- **Machine Learning for Cardiovascular Diagnostics**, _Journal of Computational Biology_, 2024.
-- **Integrating AI into Clinical Workflows**, _Georgia Tech Biomedical Symposium_, 2024.
+_All research and materials were produced during my tenure as Research Assistant at Georgia Tech's Cardiovascular Fluid Mechanics Laboratory. The code, data, and insights are property of Georgia Tech and all collaborators involved in this project._
 
 ---
-*Special thanks to the Wallace H. Coulter Department of Biomedical Engineering, Georgia Tech, and all collaborating clinicians.*
+
+## 🔍 Overview
+
+This research was conducted to address a critical healthcare challenge: **heart disease**—the world’s leading cause of death. We focused on using non-invasive ECG signal analysis for early detection.
+
+The system merges **Convolutional Neural Networks (CNNs)** and **Support Vector Machines (SVMs)** into a hybrid model. Our goal: to deliver high-accuracy predictions while maintaining interpretability and clinical relevance.
+
+---
+
+## 🧠 What We Built
+
+We designed a **hybrid CNN-SVM model** that combines the strengths of deep learning and traditional machine learning.
+
+- **The Approach**: CNNs for automatic feature extraction, SVMs for final classification.
+- **Key Features**:  
+  - Temporal: QRS duration, RR intervals  
+  - Spectral: Fast Fourier Transform (FFT) frequency-domain features
+- **Why It Works**: CNNs capture important biomedical patterns across datasets without manual tuning.
+
+---
+
+## 📊 The Results
+
+- Achieved **100% classification accuracy** on both training and validation sets.
+- Strong performance highlighted potential **overfitting**, which is being addressed through regularization and more robust validation strategies.
+
+---
+
+## 👨‍🔬 My Role
+
+As **Research Lead**, I drove the entire lifecycle of the project:
+
+- Designed the machine learning pipeline and implemented core feature extraction.
+- Led a team of research assistants and coordinated all technical development.
+- Collaborated with practicing clinicians to ensure medical applicability.
+- Published in peer-reviewed venues and presented at academic conferences.
+
+---
+
+## 🛣️ What’s Next
+
+- **Reducing Overfitting**:  
+  Employing data augmentation, cross-validation, L2 regularization, and dropout layers.
+  
+- **Real-World Deployment**:  
+  Integrating the system into clinical workflows to support fast, accurate diagnostics.
+  
+- **Expanded Testing**:  
+  Scaling evaluation to larger and more diverse patient cohorts.
+
+---
+
+## 📝 Publications
+
+- **_Machine Learning for Cardiovascular Diagnostics_**, *Journal of Computational Biology*, 2024  
+- **_Integrating AI into Clinical Workflows_**, *Georgia Tech Biomedical Symposium*, 2024
+
+---
+
+*Special thanks to the Wallace H. Coulter Department of Biomedical Engineering at Georgia Tech and the collaborating clinicians who supported this project.*
 
 ![Wallace H. Coulter BME Building](https://github.com/Nishant27-2006/georgia-tech/blob/main/gtcfml.png)
 
 ---
 
-## Contact Information
-For further inquiries or collaboration opportunities, please feel free to reach out via my GitHub profile or email me at **nishantg2706@gmail.com**.
+## 📬 Contact
+
+For inquiries or collaboration opportunities, reach out via:
+
+- GitHub: [@Nishant27-2006](https://github.com/Nishant27-2006)
+- Email: **nishantg2706@gmail.com**
 
 ---
-## Methodology
 
-This project implements a complete end-to-end pipeline for **ECG signal classification** using a **1D Convolutional Neural Network (CNN)** with K-Fold Cross-Validation, data augmentation, and multiple evaluation metrics.
+## ⚙️ Methodology
 
-### Overall Pipeline
-The methodology consists of four major stages:
+This project implements an **end-to-end ECG classification pipeline** using a **1D Convolutional Neural Network (CNN)** paired with **K-Fold Cross Validation** and multiple performance metrics.
 
-1. **Data Input & Preprocessing**  
-   - Load raw ECG signals (`.dat` + `.hea`)  
-   - Segment signals into fixed-length windows  
-   - Normalize and reshape for Conv1D  
-   - Add light Gaussian noise for augmentation
+### 📁 1. Data Input & Preprocessing
 
-2. **CNN Architecture**  
-   The model is a regularized 1D-CNN designed for biomedical time-series:
+- Read ECG signals from PhysioNet files (`.dat` and `.hea`)
+- Segment each signal into fixed-length windows (e.g., 5000 samples)
+- Normalize values and reshape to match Conv1D input
+- Apply light Gaussian noise for data augmentation
 
-   - `Conv1D` (32 filters, kernel=3, ReLU)  
-   - `MaxPooling1D`  
-   - `Dropout`  
-   - `Conv1D` (64 filters, kernel=3, ReLU)  
-   - `MaxPooling1D`  
-   - `Flatten`  
-   - `Dense` (64 units, ReLU)  
-   - `Dense` (1 → sigmoid for binary classification)
+---
 
-   **CNN Diagram:**  
-   ![CNN Architecture](cnn.png)
+### 🧱 2. CNN Architecture
 
-3. **Training Strategy — K-Fold Cross Validation**  
-   - 5-fold training  
-   - Noise-augmented training data  
-   - Metrics per fold:  
-     - Accuracy Curve  
-     - Loss Curve  
-     - Confusion Matrix  
-     - ROC Curve (AUC)
+Regularized 1D-CNN built for biomedical time-series data:
 
-4. **End-to-End Workflow Overview**  
-   A high-level block diagram illustrating the full pipeline:
+```python
+# Pseudocode architecture
+Conv1D(filters=32, kernel_size=3, activation='relu')
+MaxPooling1D(pool_size=2)
+Dropout(0.25)
 
-   ![Methodology Diagram](methodology.png)
+Conv1D(filters=64, kernel_size=3, activation='relu')
+MaxPooling1D(pool_size=2)
+
+Flatten()
+Dense(64, activation='relu')
+Dense(1, activation='sigmoid')  # Binary classification
+```
+
+#### CNN Architecture
+
+![CNN Architecture](cnn.png)
+
+---
+
+### 🔁 3. Training Strategy: K-Fold Cross Validation
+
+- **5-fold cross-validation** to ensure generalization
+- Train on noise-augmented signal batches
+- Evaluate with the following metrics per fold:
+  - Accuracy and loss curves
+  - Confusion matrix
+  - ROC curve + AUC
+
+---
+
+### 🧩 4. End-to-End Workflow
+
+High-level visualization of the full classification pipeline:
+
+![Methodology Diagram](methodology.png)
+
+---
