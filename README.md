@@ -61,25 +61,9 @@ As **Research Lead**, I drove the entire lifecycle of the project:
 
 ## 📝 Publications
 
-- **_Machine Learning for Cardiovascular Diagnostics_**, *Journal of Computational Biology*, 2024  
-- **_Integrating AI into Clinical Workflows_**, *Georgia Tech Biomedical Symposium*, 2024
+- **_Automated Detection of Heart Disease Using PhysioNet ECG Signals and Machine Learning Models_**, *2024 5th International Conference on Machine Learning and Computer Application (ICMLCA)*, *5th October 2024*
 
----
 
-*Special thanks to the Wallace H. Coulter Department of Biomedical Engineering at Georgia Tech and the collaborating clinicians who supported this project.*
-
-![Wallace H. Coulter BME Building](https://github.com/Nishant27-2006/georgia-tech/blob/main/gtcfml.png)
-
----
-
-## 📬 Contact
-
-For inquiries or collaboration opportunities, reach out via:
-
-- GitHub: [@Nishant27-2006](https://github.com/Nishant27-2006)
-- Email: **nishantg2706@gmail.com**
-
----
 
 ## ⚙️ Methodology
 
